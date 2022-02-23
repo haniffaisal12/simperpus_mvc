@@ -20,4 +20,14 @@ class PengarangModel
     {
         return $this->db->fetchSingle("SELECT * FROM $this->table WHERE id=$id");
     }
+
+    public function insertDataPengarang($data)
+    {
+        $nama = $data['nama'];
+        $email = $data['email'];
+
+        $this->db->execute("INSERT INTO $this->table VALUES ('', '$nama', '$email')");
+
+        return $this->db->affectedRows();
+    }
 }

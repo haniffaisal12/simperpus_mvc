@@ -2,10 +2,10 @@
 
 class Database
 {
-    private $db_host = 'localhost',
-        $db_user = 'root',
-        $db_pass = '',
-        $db_name = 'bootcamp',
+    private $db_host = DB_HOST,
+        $db_user = DB_USER,
+        $db_pass = DB_PASS,
+        $db_name = DB_NAME,
         $conn,
         $stmt;
 
@@ -45,5 +45,10 @@ class Database
         $fetchSingle = $this->execute($sql);
 
         return $this->stmt = mysqli_fetch_assoc($fetchSingle);
+    }
+
+    public function affectedRows()
+    {
+        return mysqli_affected_rows($this->conn);
     }
 }

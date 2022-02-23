@@ -29,4 +29,12 @@ class Pengarang extends Controller
         $this->view('pengarang/detail', $data);
         $this->view('templates/footer');
     }
+
+    public function tambah()
+    {
+        if ($this->model('PengarangModel')->insertDataPengarang($_POST) > 0) {
+            header('Location: ' . BASE_URL . '/pengarang');
+            exit;
+        }
+    }
 }

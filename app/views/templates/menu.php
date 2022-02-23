@@ -1,23 +1,25 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="<?= BASE_URL ?>">SIMPERPUS</a>
-        </div>
-
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li <?= $data['halaman'] == 'dashboard' ? 'class="active"' : '' ?>><a href="<?= BASE_URL ?>/dashboard">Dashboard <span class="sr-only">(current)</span></a></li>
-                <li <?= $data['halaman'] == 'pengarang' ? 'class="active"' : '' ?>><a href="<?= BASE_URL ?>/pengarang">Pengarang</a></li>
-                <li <?= $data['halaman'] == 'buku' ? 'class="active"' : '' ?>><a href="<?= BASE_URL ?>/buku">Buku</a></li>
-                <li <?= $data['halaman'] == 'cabang' ? 'class="active"' : '' ?>><a href="<?= BASE_URL ?>/cabang">Cabang</a></li>
+        <a class="navbar-brand" href="<?= BASE_URL ?>">SIMPERPUS</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a <?= $data['halaman'] == 'dashboard' ? 'class="nav-link active"' : 'class="nav-link"' ?> aria-current="page" href="<?= BASE_URL ?>/dashboard">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a <?= $data['halaman'] == 'pengarang' ? 'class="nav-link active"' : 'class="nav-link"' ?> href="<?= BASE_URL ?>/pengarang">Pengarang</a>
+                </li>
+                <li class="nav-item">
+                    <a <?= $data['halaman'] == 'buku' ? 'class="nav-link active"' : 'class="nav-link"' ?> href="<?= BASE_URL ?>/buku">Buku</a>
+                </li>
+                <li class="nav-item">
+                    <a <?= $data['halaman'] == 'cabang' ? 'class="nav-link active"' : 'class="nav-link"' ?> href="<?= BASE_URL ?>/cabang">Cabang</a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
+<br>

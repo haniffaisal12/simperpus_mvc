@@ -29,4 +29,12 @@ class Cabang extends Controller
         $this->view('cabang/detail', $data);
         $this->view('templates/footer');
     }
+
+    public function tambah()
+    {
+        if ($this->model('CabangModel')->insertDataCabang($_POST) > 0) {
+            header('Location: ' . BASE_URL . '/cabang');
+            exit;
+        }
+    }
 }
