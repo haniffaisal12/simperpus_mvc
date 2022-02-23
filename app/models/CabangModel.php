@@ -1,9 +1,9 @@
 <?php
 
-class PengarangModel
+class CabangModel
 {
-    private $table = 'pengarang',
-        $allowed_fields = ['id', 'nama', 'email'],
+    private $table = 'cabang',
+        $allowed_fields = ['id', 'kode_cabang', 'nama_cabang', 'alamat'],
         $db;
 
     public function __construct()
@@ -11,12 +11,12 @@ class PengarangModel
         $this->db = new Database;
     }
 
-    public function getAllPengarang()
+    public function getAllCabang()
     {
         return $this->db->fetchAll("SELECT * FROM $this->table ORDER BY id ASC");
     }
 
-    public function getDetailPengarang($id)
+    public function getDetailCabang($id)
     {
         return $this->db->fetchSingle("SELECT * FROM $this->table WHERE id=$id");
     }
