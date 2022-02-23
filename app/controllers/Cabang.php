@@ -33,6 +33,24 @@ class Cabang extends Controller
     public function tambah()
     {
         if ($this->model('CabangModel')->insertDataCabang($_POST) > 0) {
+            Flasher::setFlash('Berhasil', 'Ditambahkan', 'success', 'Cabang');
+            header('Location: ' . BASE_URL . '/cabang');
+            exit;
+        } else {
+            Flasher::setFlash('Gagal', 'Ditambahkan', 'danger', 'Cabang');
+            header('Location: ' . BASE_URL . '/cabang');
+            exit;
+        }
+    }
+
+    public function hapus($id)
+    {
+        if ($this->model('CabangModel')->deleteDataCabang($id) > 0) {
+            Flasher::setFlash('Berhasil', 'Dihapus', 'success', 'Cabang');
+            header('Location: ' . BASE_URL . '/cabang');
+            exit;
+        } else {
+            Flasher::setFlash('Gagal', 'Dihapus', 'danger', 'Cabang');
             header('Location: ' . BASE_URL . '/cabang');
             exit;
         }

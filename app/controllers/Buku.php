@@ -35,6 +35,24 @@ class Buku extends Controller
     public function tambah()
     {
         if ($this->model('BukuModel')->insertDataBuku($_POST, $_FILES) > 0) {
+            Flasher::setFlash('Berhasil', 'Ditambahkan', 'success', 'Buku');
+            header('Location: ' . BASE_URL . '/buku');
+            exit;
+        } else {
+            Flasher::setFlash('Gagal', 'Ditambahkan', 'danger', 'Buku');
+            header('Location: ' . BASE_URL . '/buku');
+            exit;
+        }
+    }
+
+    public function hapus($id)
+    {
+        if ($this->model('BukuModel')->deleteDataBuku($id) > 0) {
+            Flasher::setFlash('Berhasil', 'Dihapus', 'success', 'Buku');
+            header('Location: ' . BASE_URL . '/buku');
+            exit;
+        } else {
+            Flasher::setFlash('Gagal', 'Dihapus', 'danger', 'Buku');
             header('Location: ' . BASE_URL . '/buku');
             exit;
         }

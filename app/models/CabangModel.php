@@ -31,4 +31,10 @@ class CabangModel
 
         return $this->db->affectedRows();
     }
+
+    public function deleteDataCabang($id)
+    {
+        $this->db->execute("DELETE FROM $this->table WHERE id=$id");
+        return $this->db->affectedRows();
+    }
 }

@@ -5,4 +5,4 @@ define('BASE_URL', 'http://localhost/simperpus_mvc/public');
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
-define('DB_NAME', 'bootcamp');
+define('DB_NAME', 'simperpus_mvc');

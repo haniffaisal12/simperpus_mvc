@@ -33,6 +33,24 @@ class Pengarang extends Controller
     public function tambah()
     {
         if ($this->model('PengarangModel')->insertDataPengarang($_POST) > 0) {
+            Flasher::setFlash('Berhasil', 'Ditambahkan', 'success', 'Pengarang');
+            header('Location: ' . BASE_URL . '/pengarang');
+            exit;
+        } else {
+            Flasher::setFlash('Gagal', 'Ditambahkan', 'danger', 'Pengarang');
+            header('Location: ' . BASE_URL . '/pengarang');
+            exit;
+        }
+    }
+
+    public function hapus($id)
+    {
+        if ($this->model('PengarangModel')->deleteDataPengarang($id) > 0) {
+            Flasher::setFlash('Berhasil', 'Dihapus', 'success', 'Pengarang');
+            header('Location: ' . BASE_URL . '/pengarang');
+            exit;
+        } else {
+            Flasher::setFlash('Gagal', 'Dihapus', 'danger', 'Pengarang');
             header('Location: ' . BASE_URL . '/pengarang');
             exit;
         }

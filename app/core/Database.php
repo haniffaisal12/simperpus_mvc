@@ -24,6 +24,7 @@ class Database
 
         if (!$this->stmt) {
             echo "<script>alert('Error : " . mysqli_error($this->conn) . "')</script>";
+            echo "<script>history.go(-1);</script>";
             exit();
         }
 

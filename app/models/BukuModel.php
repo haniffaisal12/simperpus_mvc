@@ -49,4 +49,15 @@ class BukuModel
 
         return $this->db->affectedRows();
     }
+
+    public function deleteDataBuku($id)
+    {
+        $this->db->execute("DELETE FROM $this->table WHERE id=$id");
+        return $this->db->affectedRows();
+    }
+
+    public function cariBukuByJudul($judul)
+    {
+        return $this->db->fetchAll("SELECT $this->table.*,pengarang.nama FROM buku INNER JOIN pengarang ON pengarang.id=$this->table.idpengarang WHERE judul LIKE '%$judul%'");
+    }
 }

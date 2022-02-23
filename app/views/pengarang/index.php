@@ -1,4 +1,5 @@
 <main>
+    <?php Flasher::flash() ?>
     <h3>Daftar Pengarang</h3>
     <br>
     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#insertModal">
@@ -17,12 +18,10 @@
             <tr>
                 <td><?= $pengarang['nama'] ?></td>
                 <td><?= $pengarang['email'] ?></td>
-                <td><a class="btn btn-info btn-sm" href="<?= BASE_URL; ?>/pengarang/detail/<?= $pengarang['id'] ?>">
-                        Detail</a>
-                    <a class="btn btn-warning btn-sm" href="<?= BASE_URL; ?>/pengarang/edit/<?= $pengarang['id'] ?>">
-                        Edit</a>
-                    <a class="btn btn-danger btn-sm" onclick="return confirm('akan menghapus data?')" href="<?= BASE_URL; ?>/pengarang/hapus/<?= $pengarang['id'] ?>">
-                        Hapus</a>
+                <td>
+                    <a class="btn btn-info btn-sm" href="<?= BASE_URL; ?>/pengarang/detail/<?= $pengarang['id'] ?>"> Detail </a>
+                    <a class="btn btn-warning btn-sm" href="<?= BASE_URL; ?>/pengarang/edit/<?= $pengarang['id'] ?>"> Edit </a>
+                    <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin akan menghapus data ini ?')" href="<?= BASE_URL; ?>/pengarang/hapus/<?= $pengarang['id'] ?>"> Hapus </a>
                 </td>
             </tr>
         <?php

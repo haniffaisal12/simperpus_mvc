@@ -1,4 +1,5 @@
 <main>
+    <?php Flasher::flash() ?>
     <h3>Daftar Buku</h3>
     <br>
     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#insertModal">
@@ -23,12 +24,10 @@
                 <td><?= $buku['nama'] ?></td>
                 <td><?= $buku['stok'] ?></td>
                 <td><img src="<?= BASE_URL; ?>/image/<?= $buku['gambar'] ?>"" width=" 100" height="100"></td>
-                <td><a class="btn btn-info btn-sm" href="<?= BASE_URL; ?>/buku/detail/<?= $buku['id'] ?>">
-                        Detail</a>
-                    <a class="btn btn-warning btn-sm" href="<?= BASE_URL; ?>/buku/edit/<?= $buku['id'] ?>">
-                        Edit</a>
-                    <a class="btn btn-danger btn-sm" onclick="return confirm('akan menghapus data?')" href="<?= BASE_URL; ?>/buku/hapus/<?= $data['id'] ?>">
-                        Hapus</a>
+                <td>
+                    <a class="btn btn-info btn-sm" href="<?= BASE_URL; ?>/buku/detail/<?= $buku['id']; ?>"> Detail </a>
+                    <a class="btn btn-warning btn-sm" href="<?= BASE_URL; ?>/buku/edit/<?= $buku['id'] ?>"> Edit </a>
+                    <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin akan menghapus data ini ?')" href="<?= BASE_URL; ?>/buku/hapus/<?= $buku['id'] ?>"> Hapus </a>
                 </td>
             </tr>
         <?php

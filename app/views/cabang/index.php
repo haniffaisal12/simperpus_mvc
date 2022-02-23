@@ -1,4 +1,5 @@
 <main>
+    <?php Flasher::flash() ?>
     <h3>Daftar Cabang</h3>
     <br>
     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#insertModal">
@@ -19,12 +20,10 @@
                 <td><?= $cabang['kode_cabang'] ?></td>
                 <td><?= $cabang['nama_cabang'] ?></td>
                 <td><?= $cabang['alamat'] ?></td>
-                <td><a class="btn btn-info btn-sm" href="<?= BASE_URL; ?>/cabang/detail/<?= $cabang['id'] ?>">
-                        Detail</a>
-                    <a class="btn btn-warning btn-sm" href="<?= BASE_URL; ?>/cabang/edit/<?= $cabang['id'] ?>">
-                        Edit</a>
-                    <a class="btn btn-danger btn-sm" onclick="return confirm('akan menghapus data?')" href="<?= BASE_URL; ?>/cabang/hapus/<?= $cabang['id'] ?>">
-                        Hapus</a>
+                <td>
+                    <a class="btn btn-info btn-sm" href="<?= BASE_URL; ?>/cabang/detail/<?= $cabang['id'] ?>"> Detail </a>
+                    <a class="btn btn-warning btn-sm" href="<?= BASE_URL; ?>/cabang/edit/<?= $cabang['id'] ?>"> Edit </a>
+                    <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin akan menghapus data ini ?')" href="<?= BASE_URL; ?>/cabang/hapus/<?= $cabang['id'] ?>"> Hapus </a>
                 </td>
             </tr>
         <?php
