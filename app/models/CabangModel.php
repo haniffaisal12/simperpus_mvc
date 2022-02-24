@@ -37,4 +37,16 @@ class CabangModel
         $this->db->execute("DELETE FROM $this->table WHERE id=$id");
         return $this->db->affectedRows();
     }
+
+    public function editDataCabang($data)
+    {
+        $id = $data['id'];
+        $kode_cabang = $data['kode_cabang'];
+        $nama_cabang = $data['nama_cabang'];
+        $alamat = $data['alamat'];
+
+        $this->db->execute("UPDATE $this->table SET kode_cabang='$kode_cabang', nama_cabang='$nama_cabang', alamat='$alamat' WHERE id=$id");
+
+        return $this->db->affectedRows();
+    }
 }

@@ -55,4 +55,22 @@ class Cabang extends Controller
             exit;
         }
     }
+
+    public function getEdit()
+    {
+        echo json_encode($this->model('CabangModel')->getDetailCabang($_POST['id']));
+    }
+
+    public function edit()
+    {
+        if ($this->model('CabangModel')->editDataCabang($_POST) > 0) {
+            Flasher::setFlash('Berhasil', 'Diubah', 'success', 'Cabang');
+            header('Location: ' . BASE_URL . '/cabang');
+            exit;
+        } else {
+            Flasher::setFlash('Gagal', 'Diubah', 'danger', 'Cabang');
+            header('Location: ' . BASE_URL . '/cabang');
+            exit;
+        }
+    }
 }

@@ -2,7 +2,7 @@
     <?php Flasher::flash() ?>
     <h3>Daftar Buku</h3>
     <br>
-    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#insertModal">
+    <button type="button" class="btn btn-success modalTambahBuku" data-bs-toggle="modal" data-bs-target="#insertModalBuku">
         Tambah
     </button>
     <br><br>
@@ -26,8 +26,8 @@
                 <td><img src="<?= BASE_URL; ?>/image/<?= $buku['gambar'] ?>"" width=" 100" height="100"></td>
                 <td>
                     <a class="btn btn-info btn-sm" href="<?= BASE_URL; ?>/buku/detail/<?= $buku['id']; ?>"> Detail </a>
-                    <a class="btn btn-warning btn-sm" href="<?= BASE_URL; ?>/buku/edit/<?= $buku['id'] ?>"> Edit </a>
-                    <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin akan menghapus data ini ?')" href="<?= BASE_URL; ?>/buku/hapus/<?= $buku['id'] ?>"> Hapus </a>
+                    <a class="btn btn-warning btn-sm modalEditBuku" data-bs-toggle="modal" data-bs-target="#insertModalBuku" data-id="<?= $buku['id']; ?>"> Edit </a>
+                    <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin akan menghapus data ini ?')" href="<?= BASE_URL; ?>/buku/hapus/<?= $buku['id']; ?>"> Hapus </a>
                 </td>
             </tr>
         <?php
@@ -36,16 +36,17 @@
     </table>
 </main>
 
-<div class="modal fade" id="insertModal" tabindex="-1" aria-labelledby="judulModal" aria-hidden="true">
+<div class="modal fade" id="insertModalBuku" tabindex="-1" aria-labelledby="judulModalBuku" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="judulModal">Tambah Data Buku</h5>
+                <h5 class="modal-title" id="judulModalBuku">Tambah Data Buku</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
 
                 <form action="<?= BASE_URL; ?>/buku/tambah" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="id" id="id">
                     <div class="row">
                         <div class="col">
                             <input type="text" class="form-control" id="isbn" name="isbn" placeholder="ISBN" aria-label="ISBN">

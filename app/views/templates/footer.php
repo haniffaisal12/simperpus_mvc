@@ -9,5 +9,6 @@
 <!-- https://github.com/DASPRiD/Bootstrap-DatePicker -->
 <script type="text/javascript" src="<?= BASE_URL ?>/bootstrap-datepicker/bootstrap-datepicker.js"></script>
 <script src="<?= BASE_URL; ?>/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<?= BASE_URL; ?>/js/script.js"></script>
 
 </html>

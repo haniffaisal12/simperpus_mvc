@@ -36,4 +36,15 @@ class PengarangModel
         $this->db->execute("DELETE FROM $this->table WHERE id=$id");
         return $this->db->affectedRows();
     }
+
+    public function editDataPengarang($data)
+    {
+        $id = $data['id'];
+        $nama = $data['nama'];
+        $email = $data['email'];
+
+        $this->db->execute("UPDATE $this->table SET nama='$nama', email='$email' WHERE id=$id");
+
+        return $this->db->affectedRows();
+    }
 }

@@ -55,4 +55,22 @@ class Pengarang extends Controller
             exit;
         }
     }
+
+    public function getEdit()
+    {
+        echo json_encode($this->model('PengarangModel')->getDetailPengarang($_POST['id']));
+    }
+
+    public function edit()
+    {
+        if ($this->model('PengarangModel')->editDataPengarang($_POST, $_FILES) > 0) {
+            Flasher::setFlash('Berhasil', 'Diubah', 'success', 'Pengarang');
+            header('Location: ' . BASE_URL . '/pengarang');
+            exit;
+        } else {
+            Flasher::setFlash('Gagal', 'Diubah', 'danger', 'Pengarang');
+            header('Location: ' . BASE_URL . '/pengarang');
+            exit;
+        }
+    }
 }
