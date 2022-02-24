@@ -73,4 +73,18 @@ class Cabang extends Controller
             exit;
         }
     }
+
+    public function cari()
+    {
+        $cariCabang = $this->model('CabangModel')->cariDataCabang();
+        $data = [
+            'title' => "Cabang",
+            'halaman' => "cabang",
+            'dataCabang' => $cariCabang,
+        ];
+        $this->view('templates/header', $data);
+        $this->view('templates/menu', $data);
+        $this->view('cabang/index', $data);
+        $this->view('templates/footer');
+    }
 }

@@ -47,4 +47,11 @@ class PengarangModel
 
         return $this->db->affectedRows();
     }
+
+    public function cariDataPengarang()
+    {
+        $nama = $_POST['nama'];
+
+        return $this->db->fetchAll("SELECT * FROM $this->table WHERE nama LIKE '%$nama%'");
+    }
 }

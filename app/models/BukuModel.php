@@ -50,8 +50,10 @@ class BukuModel
         return $this->db->affectedRows();
     }
 
-    public function deleteDataBuku($id)
+    public function deleteDataBuku($id, $gambar)
     {
+        unlink("image/$gambar");
+
         $this->db->execute("DELETE FROM $this->table WHERE id=$id");
         return $this->db->affectedRows();
     }
@@ -63,8 +65,13 @@ class BukuModel
         $judul = $data['judul'];
         $idpengarang = $data['idpengarang'];
         $stok = $data['stok'];
+        $file_name = $data['gambar_lama'];
 
-        if (isset($upload['gambar'])) {
+        if (
+            isset($upload['gambar']) &&
+            !empty($upload['gambar']['name'])
+        ) {
+            unlink("image/$file_name");
             $errors = array();
             $file_name = trim($upload['gambar']['name']);
             $file_size = $upload['gambar']['size'];
@@ -86,8 +93,10 @@ class BukuModel
         return $this->db->affectedRows();
     }
 
-    public function cariBukuByJudul($judul)
+    public function cariDataBuku()
     {
-        return $this->db->fetchAll("SELECT $this->table.*,pengarang.nama FROM buku INNER JOIN pengarang ON pengarang.id=$this->table.idpengarang WHERE judul LIKE '%$judul%'");
+        $judul = $_POST['cariJudul'];
+
+        return $this->db->fetchAll("SELECT $this->table.*, pengarang.nama FROM $this->table INNER JOIN pengarang ON pengarang.id=$this->table.idpengarang WHERE judul LIKE '%$judul%'");
     }
 }

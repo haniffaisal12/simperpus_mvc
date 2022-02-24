@@ -49,4 +49,11 @@ class CabangModel
 
         return $this->db->affectedRows();
     }
+
+    public function cariDataCabang()
+    {
+        $nama_cabang = $_POST['nama_cabang'];
+
+        return $this->db->fetchAll("SELECT * FROM $this->table WHERE nama_cabang LIKE '%$nama_cabang%'");
+    }
 }

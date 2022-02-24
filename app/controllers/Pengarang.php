@@ -73,4 +73,18 @@ class Pengarang extends Controller
             exit;
         }
     }
+
+    public function cari()
+    {
+        $cariPengarang = $this->model('PengarangModel')->cariDataPengarang();
+        $data = [
+            'title' => "Pengarang",
+            'halaman' => "pengarang",
+            'dataPengarang' => $cariPengarang,
+        ];
+        $this->view('templates/header', $data);
+        $this->view('templates/menu', $data);
+        $this->view('pengarang/index', $data);
+        $this->view('templates/footer');
+    }
 }

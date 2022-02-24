@@ -3,6 +3,7 @@ $(function() {
     // Buku
     $('.modalTambahBuku').on('click', function() {
         $('#judulModalBuku').html('Tambah Data Buku');
+        $('#uploadedImage').html('<p></p>');
     });
 
     $('.modalEditBuku').on('click', function() {
@@ -17,12 +18,16 @@ $(function() {
             method: 'post',
             dataType: 'json',
             success: function(data) {
+                console.log(data);
                 $('#id').val(data.id);
                 $('#isbn').val(data.isbn);
                 $('#judul').val(data.judul);
                 $('#idpengarang').val(data.idpengarang);
                 $('#stok').val(data.stok);
-                $('#gambar').val(data.gambar);
+                $('#gambar_lama').val(data.gambar);
+
+                var image = "<img src='http://localhost/simperpus_mvc/public/image/"+data.gambar+"' height='100' width='100'><p><i>"+data.gambar+"</i></p>"
+                $('#uploadedImage').html(image);
             }
         });
     });

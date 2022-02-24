@@ -45,9 +45,9 @@ class Buku extends Controller
         }
     }
 
-    public function hapus($id)
+    public function hapus($id, $gambar)
     {
-        if ($this->model('BukuModel')->deleteDataBuku($id) > 0) {
+        if ($this->model('BukuModel')->deleteDataBuku($id, $gambar) > 0) {
             Flasher::setFlash('Berhasil', 'Dihapus', 'success', 'Buku');
             header('Location: ' . BASE_URL . '/buku');
             exit;
@@ -74,5 +74,19 @@ class Buku extends Controller
             header('Location: ' . BASE_URL . '/buku');
             exit;
         }
+    }
+
+    public function cari()
+    {
+        $cariBuku = $this->model('BukuModel')->cariDataBuku();
+        $data = [
+            'title' => "Buku",
+            'halaman' => "buku",
+            'dataBuku' => $cariBuku,
+        ];
+        $this->view('templates/header', $data);
+        $this->view('templates/menu', $data);
+        $this->view('buku/index', $data);
+        $this->view('templates/footer');
     }
 }

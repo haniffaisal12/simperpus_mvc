@@ -2,6 +2,16 @@
     <?php Flasher::flash() ?>
     <h3>Daftar Cabang</h3>
     <br>
+    <form action="<?= BASE_URL ?>/cabang/cari" method="POST">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Ketik Nama Cabang" aria-label="Ketik Nama Cabang" aria-describedby="button-addon2" id="nama_cabang" name="nama_cabang">
+                    <button class="btn btn-outline-primary" type="submit" id="button-addon2">Cari</button>
+                </div>
+            </div>
+        </div>
+    </form>
     <button type="button" class="btn btn-success modalTambahCabang" data-bs-toggle="modal" data-bs-target="#insertModal">
         Tambah
     </button>
