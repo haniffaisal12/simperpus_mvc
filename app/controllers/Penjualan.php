@@ -36,12 +36,36 @@ class Penjualan extends Controller
 
     public function tambah()
     {
-        if ($this->model('PenjualanModel')->insertDataPenjualan($_POST) > 0) {
-            Flasher::setFlash('Berhasil', 'Ditambahkan', 'success', 'Penjualan');
+        $dataBuku = $this->model('BukuModel')->getDetailBuku($_POST['idbuku']);
+
+        if ($this->model('BukuModel')->updateStokBuku($dataBuku, $_POST['jumlah']) > 0) {
+            if ($this->model('PenjualanModel')->insertDataPenjualan($_POST) > 0) {
+                Flasher::setFlash('Berhasil', 'Ditambahkan', 'success', 'Penjualan');
+                header('Location: ' . BASE_URL . '/penjualan');
+                exit;
+            } else {
+                Flasher::setFlash('Gagal', 'Ditambahkan', 'danger', 'Penjualan');
+                header('Location: ' . BASE_URL . '/penjualan');
+                exit;
+            }
+        } else {
+            Flasher::setFlash('Gagal', 'Ditambahkan (Stok Buku tidak Cukup)', 'danger', 'Penjualan');
+            header('Location: ' . BASE_URL . '/penjualan');
+            exit;
+        }
+    }
+
+    public function hapus($id)
+    {
+        $dataPenjualan = $this->model('PenjualanModel')->getDetailPenjualan($id);
+        $dataBuku = $this->model('BukuModel')->getDetailBuku($dataPenjualan['idbuku']);
+
+        if ($this->model('PenjualanModel')->deleteDataPenjualan($id) > 0 && $this->model('BukuModel')->kembalikanStokBuku($dataBuku, $dataPenjualan['jumlah']) > 0) {
+            Flasher::setFlash('Berhasil', 'Dihapus', 'success', 'Penjualan');
             header('Location: ' . BASE_URL . '/penjualan');
             exit;
         } else {
-            Flasher::setFlash('Gagal', 'Ditambahkan', 'danger', 'Penjualan');
+            Flasher::setFlash('Gagal', 'Dihapus', 'danger', 'Penjualan');
             header('Location: ' . BASE_URL . '/penjualan');
             exit;
         }

@@ -99,4 +99,30 @@ class BukuModel
 
         return $this->db->fetchAll("SELECT $this->table.*, pengarang.nama FROM $this->table INNER JOIN pengarang ON pengarang.id=$this->table.idpengarang WHERE judul LIKE '%$judul%'");
     }
+
+    public function updateStokBuku($data, $jml)
+    {
+        $id = $data['id'];
+        $stok = $data['stok'];
+        $updateStok = $stok - $jml;
+
+        if ($updateStok >= 0) {
+            $this->db->execute("UPDATE $this->table SET stok=$updateStok WHERE id=$id");
+
+            return $this->db->affectedRows();
+        } else {
+            return 0;
+        }
+    }
+
+    public function kembalikanStokBuku($data, $jml)
+    {
+        $id = $data['id'];
+        $stok = $data['stok'];
+        $updateStok = $stok + $jml;
+
+        $this->db->execute("UPDATE $this->table SET stok=$updateStok WHERE id=$id");
+
+        return $this->db->affectedRows();
+    }
 }

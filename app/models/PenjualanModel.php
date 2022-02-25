@@ -18,7 +18,7 @@ class PenjualanModel
 
     public function getDetailPenjualan($id)
     {
-        return $this->db->fetchSingle("SELECT $this->table.id AS id, nama_cabang, judul, jumlah FROM $this->table INNER JOIN cabang ON cabang.id=$this->table.idcabang INNER JOIN buku ON buku.id=$this->table.idbuku WHERE $this->table.id=$id");
+        return $this->db->fetchSingle("SELECT $this->table.id AS id, idcabang, nama_cabang, idbuku, judul, jumlah FROM $this->table INNER JOIN cabang ON cabang.id=$this->table.idcabang INNER JOIN buku ON buku.id=$this->table.idbuku WHERE $this->table.id=$id");
     }
 
     public function insertDataPenjualan($data)
@@ -29,6 +29,12 @@ class PenjualanModel
 
         $this->db->execute("INSERT INTO $this->table VALUES ('', '$idcabang', '$idbuku', '$jumlah')");
 
+        return $this->db->affectedRows();
+    }
+
+    public function deleteDataPenjualan($id)
+    {
+        $this->db->execute("DELETE FROM $this->table WHERE id=$id");
         return $this->db->affectedRows();
     }
 }

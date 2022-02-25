@@ -22,7 +22,7 @@
             <tr height="50">
                 <th>Jumlah</th>
                 <td>:</td>
-                <td><?= $penjualan['jumlah'] ?></td>
+                <td><?= $penjualan['jumlah'] ?> Buku</td>
             </tr>
         </table>
     </main>
