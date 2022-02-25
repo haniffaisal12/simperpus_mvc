@@ -18,7 +18,6 @@ $(function() {
             method: 'post',
             dataType: 'json',
             success: function(data) {
-                console.log(data);
                 $('#id').val(data.id);
                 $('#isbn').val(data.isbn);
                 $('#judul').val(data.judul);
