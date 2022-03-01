@@ -21,6 +21,9 @@
                 <li class="nav-item">
                     <a <?= $data['halaman'] == 'penjualan' ? 'class="nav-link active"' : 'class="nav-link"' ?> href="<?= BASE_URL ?>/penjualan">Penjualan</a>
                 </li>
+                <li class="nav-item">
+                    <a <?= $data['halaman'] == 'pengadaan' ? 'class="nav-link active"' : 'class="nav-link"' ?> href="<?= BASE_URL ?>/pengadaan">Pengadaan</a>
+                </li>
             </ul>
         </div>
     </div>

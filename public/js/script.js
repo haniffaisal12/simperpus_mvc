@@ -80,4 +80,20 @@ $(function() {
         });
     });
 
+    // Pengadaan
+     $('.modalTambahStok').on('click', function() {
+        const id = $(this).data('id');
+
+        $.ajax({
+            url: 'http://localhost/simperpus_mvc/public/pengadaan/getStok',
+            data: {id: id},
+            method: 'post',
+            dataType: 'json',
+            success: function(data) {
+                console.log(data)
+                $('#id').val(data.id);
+                $('#stok').val(data.stok);
+            }
+        });
+    });
 });

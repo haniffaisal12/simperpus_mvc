@@ -35,8 +35,7 @@ class Database
     {
         $fetchAll = $this->execute($sql);
 
-        for ($i = 0; $result[$i] = mysqli_fetch_assoc($fetchAll); $i++);
-        array_pop($result);
+        $result = mysqli_fetch_all($fetchAll, MYSQLI_ASSOC);
 
         return $result;
     }

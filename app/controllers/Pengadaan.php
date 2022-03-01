@@ -7,8 +7,8 @@ class Pengadaan extends Controller
         $pengadaanBuku = $this->model('BukuModel')->getPengadaanBuku();
 
         $data = [
-            'title' => "Daftar Buku",
-            'halaman' => "buku",
+            'title' => "Daftar Pengadaan Buku",
+            'halaman' => "pengadaan",
             'dataBuku' => $pengadaanBuku,
         ];
         $this->view('templates/header', $data);
@@ -17,9 +17,14 @@ class Pengadaan extends Controller
         $this->view('templates/footer');
     }
 
+    public function getStok()
+    {
+        echo json_encode($this->model('BukuModel')->getDetailBuku($_POST['id']));
+    }
+
     public function tambah()
     {
-        if ($this->model('BukuModel')->insertDataBuku($_POST, $_FILES) > 0) {
+        if ($this->model('BukuModel')->tambahStokBuku($_POST) > 0) {
             Flasher::setFlash('Berhasil', 'Ditambahkan', 'success', 'Stok Buku');
             header('Location: ' . BASE_URL . '/pengadaan');
             exit;

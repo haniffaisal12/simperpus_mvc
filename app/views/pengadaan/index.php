@@ -1,6 +1,6 @@
 <main>
     <?php Flasher::flash() ?>
-    <h3>Daftar Buku</h3>
+    <h3>Daftar Pengadaan Buku</h3>
     <br>
     <table class="table table-success table-hover">
         <tr>
@@ -19,9 +19,9 @@
                 <td><?= $buku['judul'] ?></td>
                 <td><?= $buku['nama'] ?></td>
                 <td><?= $buku['stok'] ?></td>
-                <td><img src="<?= BASE_URL; ?>/image/<?= $buku['gambar'] ?>"" width=" 100" height="100"></td>
+                <td><img src="<?= BASE_URL; ?>/image/<?= $buku['gambar'] ?>" width=" 100" height="100"></td>
                 <td>
-                    <a class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#insertModalBuku"> Tambah Stok </a>
+                    <a class="btn btn-success btn-sm modalTambahStok" data-bs-toggle="modal" data-bs-target="#insertModalBuku" data-id="<?= $buku['id']; ?>"> Tambah Stok </a>
                 </td>
             </tr>
         <?php
@@ -43,6 +43,11 @@
                     <input type="hidden" name="id" id="id">
                     <div class="row">
                         <div class="col">
+                            <label for="stok">Stok Sebelumnya :</label>
+                            <input type="number" class="form-control" id="stok" name="stok" placeholder="Stok Sebelumnya" aria-label="Stok Sebelumnya" readonly>
+                        </div>
+                        <div class="col">
+                            <label for="stok">Stok Ditambahkan :</label>
                             <input type="number" class="form-control" id="jumlah" name="jumlah" placeholder="Stok Yang Ditambahkan" aria-label="Stok Yang Ditambahkan" required>
                         </div>
                     </div>

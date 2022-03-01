@@ -131,11 +131,11 @@ class BukuModel
         return $this->db->fetchAll("SELECT $this->table.id AS id, isbn, judul, nama, stok, gambar FROM $this->table INNER JOIN pengarang ON pengarang.id=$this->table.idpengarang WHERE stok < 10 ORDER BY $this->table.id ASC");
     }
 
-    public function tambahStokBuku($data, $jml)
+    public function tambahStokBuku($data)
     {
         $id = $data['id'];
         $stok = $data['stok'];
-        $updateStok = $stok + $jml;
+        $updateStok = $stok + $data['jumlah'];
 
         $this->db->execute("UPDATE $this->table SET stok=$updateStok WHERE id=$id");
 
